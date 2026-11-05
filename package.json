@@ -1,0 +1,15 @@
+{
+  "name": "kiro-database",
+  "version": "1.0.0",
+  "private": true,
+  "description": "KIRO database schemas and migrations (PostgreSQL / Neon). Owner of every table; used by kiro-backend (core) and kiro-payments (payments).",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "migrate": "node scripts/migrate.js",
+    "migrate:core": "node -e \"process.env.KIRO_MIGRATE_ONLY='core';require('./scripts/migrate.js')\"",
+    "migrate:payments": "node -e \"process.env.KIRO_MIGRATE_ONLY='payments';require('./scripts/migrate.js')\"",
+    "db:info": "node scripts/db-info.js",
+    "test": "node --test --test-concurrency=1 \"test/*.test.js\""
+  },
+  "dependencies": { "pg": "^8.13.0" }
+}
